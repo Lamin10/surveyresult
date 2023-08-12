@@ -12,6 +12,18 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('survey-result')
 
-rows = SHEET.worksheet('survey')
-data = rows.get_all_values()
-print(data)
+def get_survey_data():
+    """
+    Get survey data input from user.
+    """
+    print("Please enter your Name")
+    NAME = input("Name")
+    print("Please enter your Age")
+    AGE = int(input("Age"))
+    print("Please enter your Gender")
+    GENDER = input("Gender")
+    print("Please give your Rating")
+    RATING = input("Rating")
+    print(f"Your name is: {NAME}, Your gender is: {GENDER}, Your age is: {AGE}, Your rating is: {RATING}")
+
+get_survey_data()
