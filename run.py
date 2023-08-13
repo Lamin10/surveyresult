@@ -14,7 +14,7 @@ SHEET = GSPREAD_CLIENT.open('survey-result')
 
 def get_survey_data():
     """
-    Get survey data input from user.
+    Get survey data input from user and update the Google Sheets spreadsheet.
     """
     print("Please enter your Name")
     NAME = input("Name")
@@ -23,7 +23,31 @@ def get_survey_data():
     print("Please enter your Gender")
     GENDER = input("Gender")
     print("Please give your Rating")
-    RATING = input("Rating")
-    print(f"Your name is: {NAME}, Your gender is: {GENDER}, Your age is: {AGE}, Your rating is: {RATING}")
+    RATING = int(input("Rating"))
 
-get_survey_data()
+    return NAME, AGE, GENDER, RATING
+
+def update_sheet(name, age, gender, rating):
+    """
+    Update the Google Sheets spreadsheet with survey data.
+    """
+    # Open the first sheet of the spreadsheet
+    sheet = SHEET.get_worksheet(0)
+    
+    # Append the survey data to the spreadsheet
+    new_row = [name, age, gender, rating]
+    sheet.append_row(new_row)
+    
+    print(f"Your name is: {name}, Your gender is: {gender}, Your age is: {age}, Your rating is: {rating}")
+    print("Survey data appended to the spreadsheet.")
+
+def main():
+    name, age, gender, rating = get_survey_data()
+    update_sheet(name, age, gender, rating)
+
+if __name__ == "__main__":
+    main()
+
+
+  
+ 
