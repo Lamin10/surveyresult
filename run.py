@@ -41,13 +41,25 @@ def update_sheet(name, age, gender, rating):
     print(f"Your name is: {name}, Your gender is: {gender}, Your age is: {age}, Your rating is: {rating}")
     print("Survey data appended to the spreadsheet.")
 
+
+def calculate_average_rating():
+    """
+    Calculate the average rating of all survey participants.
+    """
+    sheet = SHEET.get_worksheet(0)
+    ratings = sheet.col_values(4)[1:] 
+    ratings = [int(rating) for rating in ratings]
+    average_rating = sum(ratings) / (len(ratings))
+    return average_rating
+
 def main():
     name, age, gender, rating = get_survey_data()
     update_sheet(name, age, gender, rating)
 
+    avg_rating = calculate_average_rating()
+    print(f"Average Rating of all participants: {avg_rating}")
+
+
 if __name__ == "__main__":
-    main()
-
-
-  
+    main()  
  
