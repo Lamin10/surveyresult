@@ -12,20 +12,32 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('survey-result')
 
+
+
 def get_survey_data():
     """
     Get survey data input from user and update the Google Sheets spreadsheet.
     """
     print("Please enter your Name")
-    NAME = str.capitalize(input("Name"))
+    NAME = str.capitalize(input("Name: "))
     print("Please enter your Age")
-    AGE = int(input("Age"))
-    print("Please enter your Gender")
-    GENDER = str.capitalize(input("Gender"))
+    AGE = int(input("Age: "))
+    print("Please enter your Gender:")
+    GENDER = str.capitalize(input("Gender: "))
     print("Please give your Rating")
-    RATING = int(input("Rating"))
-
+    RATING = int(input("Rating: "))
+    while True:
+        try:
+            RATING = int(input("Rating: "))
+            if RATING > 5:
+                raise ValueError("Rating cannot be greater than 5")
+            break  # Exit the loop if valid rating entered
+        except ValueError:
+            print("Rating cannot be greater than 5")
+            print("Invalid rating. Please enter a valid rating.")
     return NAME, AGE, GENDER, RATING
+
+
 
 def update_sheet(name, age, gender, rating):
     """
