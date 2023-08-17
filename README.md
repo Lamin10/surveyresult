@@ -15,14 +15,14 @@ The update_sheet(name, age, gender, rating) function interacts with the Google S
 The calculate_average_rating() function computes the average rating of all survey participants. It retrieves the ratings from the spreadsheet, filters out non-numeric values, and calculates the average using valid ratings.
 
 ### Calculating Gender Counts:
-   The calculate_gender_counts() function calculates the number of participants by gender. It analyzes the gender data from the 
-   spreadsheet, counts the occurrences of each gender, and presents the results.
+The calculate_gender_counts() function calculates the number of participants by gender. It analyzes the gender data from the 
+spreadsheet, counts the occurrences of each gender, and presents the results.
 
 ### Main Function:
-   The main() function orchestrates the execution of the script. It calls the get_survey_data() function to gather input, then invokes 
-   the update_sheet() function to store the survey data in the spreadsheet. Subsequently, it calculates the average rating using 
-   calculate_average_rating() and displays it. Lastly, it calculates the participant counts by gender using calculate_gender_counts() 
-   and displays those counts.
+The main() function orchestrates the execution of the script. It calls the get_survey_data() function to gather input, then invokes 
+the update_sheet() function to store the survey data in the spreadsheet. Subsequently, it calculates the average rating using 
+calculate_average_rating() and displays it. Lastly, it calculates the participant counts by gender using calculate_gender_counts() 
+and displays those counts.
 
 ## packages installed:
 
