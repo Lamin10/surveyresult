@@ -25,7 +25,6 @@ def get_survey_data():
     print("Please enter your Gender:")
     GENDER = str.capitalize(input("Gender:\n "))
     print("Please give your Rating")
-    RATING = int(input("Rating:\n "))
     while True:
         try:
             RATING = int(input("Rating: "))
